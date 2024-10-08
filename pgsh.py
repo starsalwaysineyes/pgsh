@@ -942,8 +942,8 @@ class PGSH:
             contents=""
             for row in sorted_data:
                 table_content += f"<tr><td style='border: 1px solid #ccc; padding: 6px;'>{row['序号']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['用户']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['arg1']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['arg2']}</td></tr>"
-                contents+=f"{row['序号']} {row['用户']} {row['arg1']} {row['arg2']}"
-            self.msg = f"用户名 总积分 今日积分  {contents} "
+                contents+=f"序号：{row['序号']} 用户：{row['用户']} 总积分：{row['arg1']} 今日获得：{row['arg2']}\n"
+            self.msg = f"{contents} "
             if ts:
                 print("start send")
                 self.send_msg()
@@ -967,8 +967,8 @@ class PGSH:
             print("❎推送失败，未配置推送")
             
     def Wxpusher_server(self):
-        print(self.msg)
-        return 
+        # print(self.msg)
+        # return 
         import os
         import requests
 
@@ -1186,8 +1186,8 @@ if __name__ == '__main__':
             PGSH(ck).jf()
         else:
             print("❎未开启代理模式")
-            PGSH(ck).jf()
-            exit()
+            # PGSH(ck).jf()
+            # exit()
             with ThreadPoolExecutor(max_workers=int(bfsum)) as executor:
                 futures = [executor.submit(PGSH(ck).start) for ck in cookies]
                 for i, future in enumerate(as_completed(futures)):
