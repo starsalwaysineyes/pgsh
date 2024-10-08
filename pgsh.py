@@ -18,13 +18,13 @@ jh = False  # 聚合ck模式，开启即所有环境模式ck都生效，都会�
 #############################
 # -----运行模式配置区，自行配置------
 
-bf1 = False  # True开启并发，False关闭并发
+bf1 = True # True开启并发，False关闭并发
 bfsum1 = 3  # 并发数,开启并发模式生效
 lljf = 1 #运行新版浏览任务，22金币,只有10天
 
 # -------推送配置区，自行填写-------
 
-ts1 = False  # True开启推送，False关闭推送
+ts1 = True  # True开启推送，False关闭推送
 
 # -------代理配置区，自行填写-------
 
@@ -309,7 +309,7 @@ class PGSH:
             if dl:
                 time.sleep(2)
             else:
-                time.sleep(6)
+                time.sleep(4)
 
     # 支付宝广告任务
     def zfbgg(self):
@@ -346,7 +346,7 @@ class PGSH:
             if dl:
                 time.sleep(2)
             else:
-                time.sleep(6)
+                time.sleep(4)
 
     # 看视频赚积分
     def kspzjf(self):
@@ -373,7 +373,7 @@ class PGSH:
             if dl:
                 time.sleep(2)
             else:
-                time.sleep(6)
+                time.sleep(4)
 
     # 看广告赚积分
     def kggzjf(self):
@@ -400,7 +400,7 @@ class PGSH:
             if dl:
                 time.sleep(2)
             else:
-                time.sleep(6)
+                time.sleep(4)
 
     # 不知名任务
     def ycrw(self):
@@ -427,7 +427,7 @@ class PGSH:
             if dl:
                 time.sleep(2)
             else:
-                time.sleep(6)
+                time.sleep(4)
 
     # 大鹅积分
     def dejf(self):
@@ -454,7 +454,7 @@ class PGSH:
             if dl:
                 time.sleep(2)
             else:
-                time.sleep(6)
+                time.sleep(4)
 
     # 遍历日常
     def rcrw(self):
@@ -479,7 +479,7 @@ class PGSH:
                         if dl:
                             time.sleep(2)
                         else:
-                            time.sleep(6)
+                            time.sleep(4)
                         if dl:
                             response1 = requests.post(self.rcrw_url, data=data, headers=self.hd, proxies=global_proxy,
                                                       timeout=10, verify=False).json()
@@ -493,7 +493,7 @@ class PGSH:
                         if dl:
                             time.sleep(2)
                         else:
-                            time.sleep(6)
+                            time.sleep(4)
                 else:
                     print("❎获取任务列表为空!")
             else:
@@ -526,7 +526,7 @@ class PGSH:
                         if dl:
                             time.sleep(2)
                         else:
-                            time.sleep(6)
+                            time.sleep(4)
                         if dl:
                             response1 = requests.post(self.rcrw_url, data=data, headers=self.hd, proxies=global_proxy,
                                                       timeout=10, verify=False).json()
@@ -540,7 +540,7 @@ class PGSH:
                         if dl:
                             time.sleep(2)
                         else:
-                            time.sleep(6)
+                            time.sleep(4)
                 else:
                     print("❎获取任务列表为空!")
             else:
@@ -586,7 +586,7 @@ class PGSH:
                         if dl:
                             time.sleep(2)
                         else:
-                            time.sleep(6)
+                            time.sleep(4)
                     except Exception as e:
                         print("❎领取阶梯奖励出现错误")
                         continue
@@ -779,7 +779,7 @@ class PGSH:
             if dl:
                 time.sleep(2)
             else:
-                time.sleep(6)
+                time.sleep(4)
     def xieru(self, rw, dk):
         try:
             new_data = {
@@ -955,10 +955,41 @@ class PGSH:
     def send_msg(self):
         if 'WxPusher_token' in os.environ and os.environ['WxPusher_token'] is not None:
             self.WxPusher_ts()
-        if 'PUSH_PLUS_TOKEN' in os.environ and os.environ['PUSH_PLUS_TOKEN'] is not None:
+        elif 'PUSH_PLUS_TOKEN' in os.environ and os.environ['PUSH_PLUS_TOKEN'] is not None:
             self.pushplus_ts()
+        elif "SENDKEY" in os.environ and os.environ['SENDKEY'] is not None:
+            self.WxPusher_server()
         else:
             print("❎推送失败，未配置推送")
+            
+    def Wxpusher_server(self):
+        import os
+        import requests
+
+        def sc_send(sendkey, title, desp='', options=None):
+            if options is None:
+                options = {}
+            if sendkey.startswith('sctp'):
+                url = f'https://{sendkey}.push.ft07.com/send'
+            else:
+                url = f'https://sctapi.ftqq.com/{sendkey}.send'
+            params = {
+                'title': title,
+                'desp': desp,
+                **options
+            }
+            headers = {
+                'Content-Type': 'application/json;charset=utf-8'
+            }
+            response = requests.post(url, json=params, headers=headers)
+            result = response.json()
+            return result
+
+        key = os.environ['SENDKEY']
+
+        ret = sc_send(key, 'pgsh', self.msg)
+        print(ret)
+        pass
 
     def WxPusher_ts(self):
         try:
@@ -1002,80 +1033,86 @@ class PGSH:
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----开始执行签到-----")
                     self.sign()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----先遍历个日常，防止漏网之鱼-----")
                     self.rcrw()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----开始执行支付宝看广告-----")
                     self.zfbgg()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----开始执行赚大鹅积分-----")
                     self.dejf()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----开始执行看视频赚积分-----")
                     self.kspzjf()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
+                    print("-----开始执行看视频赚积分2-----")
+                    self.kspzjf()
+                    if dl:
+                        time.sleep(2)
+                    else:
+                        time.sleep(4)
                     print("-----开始执行看广告赚积分-----")
                     self.kggzjf()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----开始执行浏览商品赚积分-----")
                     self.shop()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----开始执行隐藏任务-----")
                     self.ycrw()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----开始执行打卡报名-----")
                     self.dkbm()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----开始执行领取瓜分资格-----")
                     self.gfjf()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     if lljf:    
                         print("-----开始执行浏览任务-----")
                         self.lljf()
                         if dl:
                             time.sleep(2)
                         else:
-                            time.sleep(6)
+                            time.sleep(4)
                     print("-----执行领取阶梯奖励----")
                     self.jtjl()
                     if dl:
                         time.sleep(2)
                     else:
-                        time.sleep(6)
+                        time.sleep(4)
                     print("-----任务执行完毕，记录id-----")
                     self.name()
                     self.xieru(1, 0)

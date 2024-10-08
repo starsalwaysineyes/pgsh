@@ -11,6 +11,12 @@ on:
   schedule:
   - cron:  '31 2 * * *'
 
+env:
+  SENDKEY: ${{ secrets.SENDKEY }}
+  
+
+
+
 permissions:
   contents: read
 
