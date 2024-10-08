@@ -944,6 +944,7 @@ class PGSH:
 
             self.msg = f"<table style='border-collapse: collapse;'><tr style='background-color: #f2f2f2;'><th style='border: 1px solid #ccc; padding: 8px;'>🆔</th><th style='border: 1px solid #ccc; padding: 8px;'>用户名</th><th style='border: 1px solid #ccc; padding: 8px;'>总积分</th><th style='border: 1px solid #ccc; padding: 8px;'>今日积分</th></tr>{table_content}</table>"
             if ts:
+                print("start send")
                 self.send_msg()
         except Exception as e:
             print(f"查询所有账号当日收益出现错误: {e}")
@@ -984,9 +985,9 @@ class PGSH:
             response = requests.post(url, json=params, headers=headers)
             result = response.json()
             return result
-
-        key = os.environ['SENDKEY']
-
+        print("before getkey")
+        key = os.environ.get('SENDKEY')
+        print("after getkey")
         ret = sc_send(key, 'pgsh', self.msg)
         print(ret)
         pass
