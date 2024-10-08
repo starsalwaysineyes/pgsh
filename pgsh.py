@@ -958,7 +958,7 @@ class PGSH:
         elif 'PUSH_PLUS_TOKEN' in os.environ and os.environ['PUSH_PLUS_TOKEN'] is not None:
             self.pushplus_ts()
         elif "SENDKEY" in os.environ and os.environ['SENDKEY'] is not None:
-            self.WxPusher_server()
+            self.Wxpusher_server()
         else:
             print("❎推送失败，未配置推送")
             
@@ -1046,6 +1046,14 @@ class PGSH:
                         time.sleep(2)
                     else:
                         time.sleep(4)
+                    
+                    print("-----再遍历个日常，防止漏网之鱼-----")
+                    self.rcrw()
+                    if dl:
+                        time.sleep(2)
+                    else:
+                        time.sleep(4)
+                    
                     print("-----开始执行支付宝看广告-----")
                     self.zfbgg()
                     if dl:
@@ -1064,12 +1072,12 @@ class PGSH:
                         time.sleep(2)
                     else:
                         time.sleep(4)
-                    print("-----开始执行看视频赚积分2-----")
-                    self.kspzjf()
-                    if dl:
-                        time.sleep(2)
-                    else:
-                        time.sleep(4)
+                    # print("-----开始执行看视频赚积分2-----")
+                    # self.kspzjf()
+                    # if dl:
+                    #     time.sleep(2)
+                    # else:
+                    #     time.sleep(4)
                     print("-----开始执行看广告赚积分-----")
                     self.kggzjf()
                     if dl:
