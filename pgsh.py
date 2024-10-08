@@ -988,7 +988,7 @@ class PGSH:
         print("before getkey")
         key = os.environ.get('SENDKEY')
         print("after getkey")
-        ret = sc_send(key, 'pgsh', self.msg)
+        ret = sc_send(key, 'pgsh', "self.msg")
         print(ret)
         pass
 
@@ -1203,6 +1203,8 @@ if __name__ == '__main__':
             for i, ck in enumerate(cookies):
                 print(f"======开始第{i + 1}个账号======")
                 now_time = datetime.now().hour
+                PGSH(ck).jf()
+                exit()
                 PGSH(ck).start()
                 print("2s后进行下一个账号")
                 time.sleep(2)
