@@ -939,10 +939,11 @@ class PGSH:
                 msg_list.append(msg)
             sorted_data = sorted(msg_list, key=lambda x: x['序号'])
             table_content = ''
+            contents=""
             for row in sorted_data:
                 table_content += f"<tr><td style='border: 1px solid #ccc; padding: 6px;'>{row['序号']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['用户']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['arg1']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['arg2']}</td></tr>"
-
-            self.msg = f"<table style='border-collapse: collapse;'><tr style='background-color: #f2f2f2;'><th style='border: 1px solid #ccc; padding: 8px;'>🆔</th><th style='border: 1px solid #ccc; padding: 8px;'>用户名</th><th style='border: 1px solid #ccc; padding: 8px;'>总积分</th><th style='border: 1px solid #ccc; padding: 8px;'>今日积分</th></tr>{table_content}</table>"
+                contents+=f"{row['序号']} {row['用户']} {row['arg1']} {row['arg2']}"
+            self.msg = f"用户名 总积分 今日积分  {table_content} "
             if ts:
                 print("start send")
                 self.send_msg()
@@ -966,6 +967,8 @@ class PGSH:
             print("❎推送失败，未配置推送")
             
     def Wxpusher_server(self):
+        print(self.msg)
+        return 
         import os
         import requests
 
