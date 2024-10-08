@@ -943,7 +943,7 @@ class PGSH:
             for row in sorted_data:
                 table_content += f"<tr><td style='border: 1px solid #ccc; padding: 6px;'>{row['序号']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['用户']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['arg1']}</td><td style='border: 1px solid #ccc; padding: 6px;'>{row['arg2']}</td></tr>"
                 contents+=f"{row['序号']} {row['用户']} {row['arg1']} {row['arg2']}"
-            self.msg = f"用户名 总积分 今日积分  {table_content} "
+            self.msg = f"用户名 总积分 今日积分  {contents} "
             if ts:
                 print("start send")
                 self.send_msg()
