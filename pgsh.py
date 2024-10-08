@@ -959,7 +959,9 @@ class PGSH:
         elif 'PUSH_PLUS_TOKEN' in os.environ and os.environ['PUSH_PLUS_TOKEN'] is not None:
             self.pushplus_ts()
         elif "SENDKEY" in os.environ and os.environ['SENDKEY'] is not None:
+            print("before send")
             self.Wxpusher_server()
+            print("after send")
         else:
             print("❎推送失败，未配置推送")
             
@@ -987,6 +989,7 @@ class PGSH:
             return result
         print("before getkey")
         key = os.environ.get('SENDKEY')
+        print(key)
         print("after getkey")
         ret = sc_send(key, 'pgsh', "self.msg")
         print(ret)
