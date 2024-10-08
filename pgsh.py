@@ -1179,6 +1179,8 @@ if __name__ == '__main__':
             PGSH(ck).jf()
         else:
             print("❎未开启代理模式")
+            PGSH(ck).jf()
+            exit()
             with ThreadPoolExecutor(max_workers=int(bfsum)) as executor:
                 futures = [executor.submit(PGSH(ck).start) for ck in cookies]
                 for i, future in enumerate(as_completed(futures)):
@@ -1203,8 +1205,7 @@ if __name__ == '__main__':
             for i, ck in enumerate(cookies):
                 print(f"======开始第{i + 1}个账号======")
                 now_time = datetime.now().hour
-                PGSH(ck).jf()
-                exit()
+                
                 PGSH(ck).start()
                 print("2s后进行下一个账号")
                 time.sleep(2)
