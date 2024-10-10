@@ -11,7 +11,8 @@ def check_yl():
              print(f"{yl} 安装完成")
 check_yl()
 ##############################
-ck = "679c3b81c97b7d53555ee4e16d3da163&147a5e99006c987be05741e9a3dbfd14"  # 本地环境ck，环境变量存在此处不生效
+ck = "679c3b81c97b7d53555ee4e16d3da163&147a5e99006c987be05741e9a3dbfd14&e8a179baf1f721733499f1413dda2864&e8314e46b3714844f8bb25904a85a42a&2faf6f250ea48eeac110b68fe5b776ba"  # 本地环境ck，环境变量存在此处不生效
+#jt&judy&zms
 ckurl1 = ""  # 数据库地址，适配部分群友要求
 jh = False  # 聚合ck模式，开启即所有环境模式ck都生效，都会合成为一个ck列表，关闭则优先处理环境变量，默认为True，False为关闭
 
