@@ -11,7 +11,8 @@ def check_yl():
              print(f"{yl} 安装完成")
 check_yl()
 ##############################
-ck = "679c3b81c97b7d53555ee4e16d3da163&147a5e99006c987be05741e9a3dbfd14\
+#811f911d5672f1d50607940f785341a2
+ck = "811f911d5672f1d50607940f785341a2&147a5e99006c987be05741e9a3dbfd14\
 &e8a179baf1f721733499f1413dda2864&e8314e46b3714844f8bb25904a85a42a\
 &2faf6f250ea48eeac110b68fe5b776ba&67722d1627a4e2ee5522574baaface71\
 &e4f7f127de45f23eedc3cf8288111e63"  # 本地环境ck，环境变量存在此处不生效
@@ -66,7 +67,7 @@ from urllib.parse import urlparse
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib3.exceptions import InsecureRequestWarning
-from requests_toolbelt import MultipartEncoder
+from requests_toolbelt import MultipartEncoder # type: ignore
 dl = os.environ.get('pg_dl', dl1)
 proxy_api_url = os.environ.get('pg_dlurl', dl_url)
 bf = os.environ.get('pg_bf', bf1)
