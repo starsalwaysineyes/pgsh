@@ -731,6 +731,7 @@ class PGSH:
                 time.sleep(1)
     # 每日答题
     def queryans(self):
+        return 
         print("------开始每日答题------")
         url = "https://userapi.qiekj.com/integralRecord/statisticsAnswer"
         start_date = datetime(2024, 9, 1)
