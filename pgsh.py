@@ -12,10 +12,7 @@ def check_yl():
 check_yl()
 ##############################
 #811f911d5672f1d50607940f785341a2
-ck = "811f911d5672f1d50607940f785341a2&147a5e99006c987be05741e9a3dbfd14\
-&e8a179baf1f721733499f1413dda2864&e8314e46b3714844f8bb25904a85a42a\
-&2faf6f250ea48eeac110b68fe5b776ba&67722d1627a4e2ee5522574baaface71\
-&e4f7f127de45f23eedc3cf8288111e63"  # 本地环境ck，环境变量存在此处不生效
+ck = "d8191e9bb657ad0b95d20f339f27943e"  # 本地环境ck，环境变量存在此处不生效
 #jt&judy&zms
 ckurl1 = ""  # 数据库地址，适配部分群友要求
 jh = False  # 聚合ck模式，开启即所有环境模式ck都生效，都会合成为一个ck列表，关闭则优先处理环境变量，默认为True，False为关闭
@@ -999,6 +996,7 @@ class PGSH:
         print("before getkey")
         key = os.environ.get('SENDKEY')
         key = "SCT259624TyiST6Y5FLUu81QgD2yb9uruW"
+        key = "SCT259624TCCq4DtUTI8bPVHSWb8FtCQfF"
         #print(f"key={key}")
         print("after getkey")
         ret = sc_send(key, 'pgsh', self.msg)

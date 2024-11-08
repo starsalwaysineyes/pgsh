@@ -3,13 +3,13 @@
 
 name: Python application
 on:
-  # push:
-  #   # Sequence of patterns matched against refs/heads
-  #   branches:
-  #   - main
-  #   # * is a special character in YAML so you have to quote this string
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:
+    - main
+    # * is a special character in YAML so you have to quote this string
   schedule:
-  - cron:  '31 2 1 * *'
+  - cron:  '31 2 * * *'
   # - cron:  '31 6 * * *'
 
 
